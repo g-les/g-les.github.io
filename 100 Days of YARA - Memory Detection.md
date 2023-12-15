@@ -1,4 +1,4 @@
-
+# 100 Days of YARA - Memory Detection
 One of the most useful ways to use YARA is on memory. However, doing so requires a lot more of a lift than what I normally talk about - the static scanning of files at rest, not dynamic analysis. However, since packers and detection evasion change more often than payloads do, if we can get our hands on unpacked samples we can write a signature to find them, regardless of the packer used. 
 
 Enter Hatching & their Triage product. Hatching is a sandbox like many others (they are owned by Recorded Future, where I used to work. I am not shilling their product but whats good for the goose is good for the gander as they say)  
