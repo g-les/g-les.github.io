@@ -1,3 +1,11 @@
+---
+layout: post
+title: "100DaysofYARA - In Memory Detection"
+date: 2024-01-01
+categories: yara
+---
+
+# 100DaysofYARA - In-Memory Detection
 
 One of the most useful ways to use YARA is on memory. However, doing so requires a lot more of a lift than what I normally talk about - the static scanning of files at rest, not dynamic analysis. However, since packers and detection evasion change more often than payloads do, if we can get our hands on unpacked samples we can write a signature to find them, regardless of the packer used. 
 
