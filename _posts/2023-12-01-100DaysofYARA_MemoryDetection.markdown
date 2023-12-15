@@ -28,7 +28,7 @@ When Triage runs the file, since the payload gets run in memory, we can grab reg
 
 Since this file is not a pure PE (as we might be from UnPacMe) we can just use good ol strings (or in this case, binary refinery's carve printable command)! Voila! 
 
-```
+{% highlight toml %}
 [-] socket create error
 [-] socket connect error
 [-] WSAStartup error
@@ -46,7 +46,7 @@ Options:
 [-] option "-c" ip of socks4 proxy
 [-] option "-s" port of socks4 proxy
 [-] invalid option: "%c"
-```
+{% endhighlight %}
 
 Now we can use these strings (especially `[+] port [1-65535]`) in a YARA rule to identify likely HazyLoad payloads. But remember all of the things we've said before, like to check file size and check the headers in your YARA rules? This is an exception to that, and usually the only one. Since YARA does not run on carved memory regions in most places, consider memory to generally be a special case, to rely almost exclusively on string-based rules that will not slow down scanning. 
 
