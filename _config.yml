@@ -28,7 +28,7 @@ twitter_username: greglesnewich
 github_username:  g-les
 
 # Build settings
-theme: minimal
+theme: minima
 plugins:
   - jekyll-feed
 
