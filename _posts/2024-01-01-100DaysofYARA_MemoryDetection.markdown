@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "100DaysofYARA - In Memory Detection"
-date: 2023-12-01
+date: 2024-01-01
 categories: yara
 ---
 
