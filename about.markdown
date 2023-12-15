@@ -11,7 +11,7 @@ Threat intelligence guy big into YARA, infrastructure tracking, and weird artifa
 - [TA444: The APT Startup Aimed at Acquisition (of Your Funds)](https://www.proofpoint.com/us/blog/threat-insight/ta444-apt-startup-aimed-at-your-funds)
 - [Webshell Madness: Full Spectrum Detections for 5 Popular Web Shells ](https://www.recordedfuture.com/full-spectrum-detections-five-popular-web-shells/)
 - [Annual Adversary Infrastructure Report](https://www.recordedfuture.com/2020-adversary-infrastructure-report/)
-- [China-Linked Group TAG-28 Targets India With Winnti Malware](https://www.recordedfuture.com/china-linked-tag-28-targets-indias-the-times-group/)
+- [4 Chinese APT Groups Identified Targeting Mail Server of Afghan Telecommunications Firm Roshan](https://www.recordedfuture.com/blog/chinese-apt-groups-target-afghan-telecommunications-firm)
 - [Yemeni War Emphasizes Importance of Internet Control in Statecraft and Conflict](https://www.recordedfuture.com/yemen-internet-control/)
 - [Chinese Threat Actor TEMP.Periscope Targets UK-Based Engineering Company Using Russian APT Techniques](https://www.recordedfuture.com/blog/chinese-threat-actor-tempperiscope)
 
