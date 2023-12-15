@@ -17,7 +17,7 @@ Threat intelligence guy big into YARA, infrastructure tracking, and weird artifa
 
 ### Conference Talks
 - [Exploring Initial Access Methods of Surprisingly Competent Government Employees](https://www.youtube.com/watch?v=LYHmTjFW-nY&ab_channel=SLEUTHCON)
-- [Star-Gazing | Using a Full Galaxy of YARA Methods to Pursue an Apex Actor](https://www.youtube.com/watch?v=aaV7UieJ_l4&ab_channel=SentinelOne)
+- [Star-Gazing Using a Full Galaxy of YARA Methods to Pursue an Apex Actor](https://www.youtube.com/watch?v=aaV7UieJ_l4&ab_channel=SentinelOne)
 
 ### Selected Projects
 - [100DaysofYARA](https://github.com/g-les/100DaysofYARA) - Sharing the YARA Love
