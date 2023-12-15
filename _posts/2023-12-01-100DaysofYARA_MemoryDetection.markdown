@@ -52,7 +52,7 @@ Now we can use these strings (especially `[+] port [1-65535]`) in a YARA rule to
 
 Triage also has its own specifics for YARA rule creation, based on required meta fields. I use the following template for rules in Triage (some of which will be shown to ALL users)
 
-{% highlight yaml %}
+```
 rule $template_triage
 {
 	meta:
@@ -69,7 +69,7 @@ rule $template_triage
 	condition:
 		any of them
 }
-{% endhighlight %}
+```
 
 
 Your logic will be hidden to others, but the name will appear in all public samples that match the rule (after they have been processed with the rule present of course) and the Triage score will dictate if the sample is called malicious, so tread carefully!  For more, see their [docs](https://tria.ge/docs/yara/)
