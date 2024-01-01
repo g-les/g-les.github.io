@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Threat intelligence guy big into YARA, infrastructure tracking, and weird artifacts
+Threat research / intelligence human big into YARA, infrastructure tracking, and weird artifacts
 
 ### Selected Publications
 - [TA422’s Dedicated Exploitation Loop—the Same Week After Week](https://www.proofpoint.com/us/blog/threat-insight/ta422s-dedicated-exploitation-loop-same-week-after-week)
