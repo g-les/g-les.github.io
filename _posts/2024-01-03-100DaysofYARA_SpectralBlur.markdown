@@ -185,14 +185,16 @@ As the retro hunt was running, I started my analysis. And, thankfully, the opera
 
 It communicates via sockets wrapped in RC4
 
-![Communication Decompilation](/assets/2023-01-03-packetdissassembly.png)
+![Communication Decompilation](/assets/2024-01-03-packetdissassembly.png)
 
 The available commands listed under the term `proc`
 
-![Command List](/assets/2023-01-03-procs.png)
+![Command List](/assets/2024-01-03-procs.png)
 
 
 And once the retro came back, we can see some similarities from sound familiar to the KandyKorn article you read from Elastic?? But these feel like families developed by different folks with the same sort of requirements.
+
+![KandyKorn / SockRacket Overview](/assets/2024-01-03-sockracket.png)
 
 I haven't the time or skill to fully reverse SpectralBlur so if anyone in the community is keen on it, go for it!! But that XCrypt function looks unique enough to sig on along with some of the function names.
 
