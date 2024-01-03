@@ -141,42 +141,43 @@ So two things happened from this point for me - I load the binary up in Binary N
 ```
 rule APT_NK_TA444_SpectralBlur_SockRacket_Overlap
 {
-		meta:
-				author = "Greg Lesnewich"
-				description = "track overlaps across KandyKorn/SockRacket and SpectralBlur"
-				date = "2023-08-21"
-				version = "1.0"
-				hash = "0753859738620c7394f04220e273974982203a6ea1c2a30247149a9c8ff07037" //SockRacket
-				hash = "1d6cf7159c8dd98299798b0985f62dd15cb2e64550cd57a9e747dc3bee5f46d8" //SockRacket
-				hash = "c99729c39d197dd774e6febab5ec33abdf31f4404b4ffadad553efb3aa86192d" //SockRacket
-				hash = "d2d60f678d0b881b3e079b46bdb813f9f7d8802a227aea46926e4bbd1838f9e5" //SockRacket
-				hash = "d57a2e0c42c63659d6c09fc593fd5d272aec75b3629d9993b760142c731a191d" //SockRacket
-				hash = "f91801b458d875cfe61f927d16202b3a853d07e89a66ca4663989878e94242ad" //SockRacket
-				hash = "6f3e849ee0fe7a6453bd0408f0537fa894b17fc55bc9d1729ae035596f5c9220" //SpectralBlur
+	meta:
+		author = "Greg Lesnewich"
+		description = "track overlaps across KandyKorn/SockRacket and SpectralBlur"
+		date = "2023-08-21"
+		version = "1.0"
+		hash = "0753859738620c7394f04220e273974982203a6ea1c2a30247149a9c8ff07037" //SockRacket
+		hash = "1d6cf7159c8dd98299798b0985f62dd15cb2e64550cd57a9e747dc3bee5f46d8" //SockRacket
+		hash = "c99729c39d197dd774e6febab5ec33abdf31f4404b4ffadad553efb3aa86192d" //SockRacket
+		hash = "d2d60f678d0b881b3e079b46bdb813f9f7d8802a227aea46926e4bbd1838f9e5" //SockRacket
+		hash = "d57a2e0c42c63659d6c09fc593fd5d272aec75b3629d9993b760142c731a191d" //SockRacket
+		hash = "f91801b458d875cfe61f927d16202b3a853d07e89a66ca4663989878e94242ad" //SockRacket
+		hash = "6f3e849ee0fe7a6453bd0408f0537fa894b17fc55bc9d1729ae035596f5c9220" //SpectralBlur
 
-		strings:
-				$s_dylib = "/usr/lib/libSystem.B.dylib" ascii wide
-				$s_string1 = "/dev/null" ascii wide
-				$s_string2 = "SHELL" ascii wide
-				$s_string3 = "/bin/sh" ascii wide
-				$s_import1 = "inet_addr" ascii wide
-				$s_import2 = "inet_ntoa" ascii wide
-				$s_import3 = "socket" ascii wide
-				$s_import4 = "socket" ascii wide
-				$s_import5 = "gethostbyname" ascii wide
-				$s_import6 = "getpwuid" ascii wide
-				$s_import7 = "kill" ascii wide
-				$fp1 = "ftp" nocase ascii wide
-				$fp2 = "kermit" nocase ascii wide
-		condition:
-				(
-				uint32(0) == 0xfeedface or // Mach-O MH_MAGIC
-				uint32(0) == 0xcefaedfe or // Mach-O MH_CIGAM
-				uint32(0) == 0xfeedfacf or // Mach-O MH_MAGIC_64
-				uint32(0) == 0xcffaedfe or // Mach-O MH_CIGAM_64
-				uint32(0) == 0xcafebabe or // Mach-O FAT_MAGIC
-				uint32(0) == 0xbebafeca    // Mach-O FAT_CIGAM
-				) and filesize < 3MB and all of ($s_*) and none of ($fp*)
+	strings:
+		$s_dylib = "/usr/lib/libSystem.B.dylib" ascii wide
+		$s_string1 = "/dev/null" ascii wide
+		$s_string2 = "SHELL" ascii wide
+		$s_string3 = "/bin/sh" ascii wide
+		$s_import1 = "inet_addr" ascii wide
+		$s_import2 = "inet_ntoa" ascii wide
+		$s_import3 = "socket" ascii wide
+		$s_import4 = "socket" ascii wide
+		$s_import5 = "gethostbyname" ascii wide
+		$s_import6 = "getpwuid" ascii wide
+		$s_import7 = "kill" ascii wide
+		$fp1 = "ftp" nocase ascii wide
+		$fp2 = "kermit" nocase ascii wide
+	condition:
+		(
+		uint32(0) == 0xfeedface or // Mach-O MH_MAGIC
+		uint32(0) == 0xcefaedfe or // Mach-O MH_CIGAM
+		uint32(0) == 0xfeedfacf or // Mach-O MH_MAGIC_64
+		uint32(0) == 0xcffaedfe or // Mach-O MH_CIGAM_64
+		uint32(0) == 0xcafebabe or // Mach-O FAT_MAGIC
+		uint32(0) == 0xbebafeca    // Mach-O FAT_CIGAM
+		)
+		and filesize < 3MB and all of ($s_*) and none of ($fp*)
 }
 ```
 
@@ -201,73 +202,73 @@ I haven't the time or skill to fully reverse SpectralBlur so if anyone in the co
 ```
 rule APT_NK_TA444_SpectralBlur
 {
-		meta:
-				author = "Greg Lesnewich"
-				description = "track the SpectralBlur backdoor"
-				date = "2023-08-21"
-				version = "1.0"
-				hash = "6f3e849ee0fe7a6453bd0408f0537fa894b17fc55bc9d1729ae035596f5c9220"
-				DaysofYARA = "3/100"
+	meta:
+		author = "Greg Lesnewich"
+		description = "track the SpectralBlur backdoor"
+		date = "2023-08-21"
+		version = "1.0"
+		hash = "6f3e849ee0fe7a6453bd0408f0537fa894b17fc55bc9d1729ae035596f5c9220"
+		DaysofYARA = "3/100"
 
-		strings:
-				$xcrypt1 = {
-					99                 // cdq
-					f7 [4-8]           // idiv    dword [rbp-0x11c {var_124}]
-					8b [4-8]           // mov     eax, dword [rbp-0x14c {var_154_1}]
-					48 63 d2           // movsxd  rdx, edx
-					0f b6 0c 11        // movzx   ecx, byte [rcx+rdx]
-					01 c8              // add     eax, ecx
-					b9 00 01 00 00     // mov     ecx, 0x100
-					99                 // cdq
-					f7 f9              // idiv    ecx
-				}
+	strings:
+		$xcrypt1 = {
+			99                 // cdq
+			f7 [4-8]           // idiv    dword [rbp-0x11c {var_124}]
+			8b [4-8]           // mov     eax, dword [rbp-0x14c {var_154_1}]
+			48 63 d2           // movsxd  rdx, edx
+			0f b6 0c 11        // movzx   ecx, byte [rcx+rdx]
+			01 c8              // add     eax, ecx
+			b9 00 01 00 00     // mov     ecx, 0x100
+			99                 // cdq
+			f7 f9              // idiv    ecx
+		}
 
-				$xcrypt2 = {
-					8b 85 c4 fe ff ff        // mov     eax, dword [rbp-0x13c {var_144_2}]
-					83 c0 01                 // add     eax, 0x1
-					b9 00 01 00 00           // mov     ecx, 0x100
-					99                       // cdq
-					f7 f9                    // idiv    ecx
-					[20-40]
-					01 c8                    // add     eax, ecx
-					b9 00 01 00 00           // mov     ecx, 0x100
-					99                       // cdq
-					f7 f9                    // idiv    ecx
-				}
+		$xcrypt2 = {
+			8b 85 c4 fe ff ff        // mov     eax, dword [rbp-0x13c {var_144_2}]
+			83 c0 01                 // add     eax, 0x1
+			b9 00 01 00 00           // mov     ecx, 0x100
+			99                       // cdq
+			f7 f9                    // idiv    ecx
+			[20-40]
+			01 c8                    // add     eax, ecx
+			b9 00 01 00 00           // mov     ecx, 0x100
+			99                       // cdq
+			f7 f9                    // idiv    ecx
+		}
 
-				$symbol1 = "xcrypt" ascii wide
-				$symbol2 = "_proc_die" ascii wide
-				$symbol3 = "_proc_dir" ascii wide
-				$symbol4 = "_proc_download" ascii wide
-				$symbol5 = "_proc_download_content" ascii wide
-				$symbol6 = "_proc_getcfg" ascii wide
-				$symbol7 = "_proc_hibernate" ascii wide
-				$symbol8 = "_proc_none" ascii wide
-				$symbol9 = "_proc_restart" ascii wide
-				$symbol10 = "_proc_rmfile" ascii wide
-				$symbol11 = "_proc_setcfg" ascii wide
-				$symbol12 = "_proc_shell" ascii wide
-				$symbol13 = "_proc_sleep" ascii wide
-				$symbol14 = "_proc_stop" ascii wide
-				$symbol15 = "_proc_testconn" ascii wide
-				$symbol16 = "_proc_upload" ascii wide
-				$symbol17 = "_proc_upload_content" ascii wide
-				$symbol18 = "_sigchild" ascii wide
+		$symbol1 = "xcrypt" ascii wide
+		$symbol2 = "_proc_die" ascii wide
+		$symbol3 = "_proc_dir" ascii wide
+		$symbol4 = "_proc_download" ascii wide
+		$symbol5 = "_proc_download_content" ascii wide
+		$symbol6 = "_proc_getcfg" ascii wide
+		$symbol7 = "_proc_hibernate" ascii wide
+		$symbol8 = "_proc_none" ascii wide
+		$symbol9 = "_proc_restart" ascii wide
+		$symbol10 = "_proc_rmfile" ascii wide
+		$symbol11 = "_proc_setcfg" ascii wide
+		$symbol12 = "_proc_shell" ascii wide
+		$symbol13 = "_proc_sleep" ascii wide
+		$symbol14 = "_proc_stop" ascii wide
+		$symbol15 = "_proc_testconn" ascii wide
+		$symbol16 = "_proc_upload" ascii wide
+		$symbol17 = "_proc_upload_content" ascii wide
+		$symbol18 = "_sigchild" ascii wide
 
-				$string1 = "/dev/null" ascii wide
-				$string2 = "SHELL" ascii wide
-				$string3 = "/bin/sh" ascii wide
-				$string4 = {2573200a2573200a2573200a2573200a2573200a2573200a2573200a257320} // %s with repeating new lines string
-		condition:
-				//(
-				//uint32(0) == 0xfeedface or // Mach-O MH_MAGIC
-				//uint32(0) == 0xcefaedfe or // Mach-O MH_CIGAM
-				//uint32(0) == 0xfeedfacf or // Mach-O MH_MAGIC_64
-				//uint32(0) == 0xcffaedfe or // Mach-O MH_CIGAM_64
-				//uint32(0) == 0xcafebabe or // Mach-O FAT_MAGIC
-				//uint32(0) == 0xbebafeca    // Mach-O FAT_CIGAM
-				//) and
-				(any of ($xcrypt*) or 4 of ($symbol*) or (all of ($string*)))
+		$string1 = "/dev/null" ascii wide
+		$string2 = "SHELL" ascii wide
+		$string3 = "/bin/sh" ascii wide
+		$string4 = {2573200a2573200a2573200a2573200a2573200a2573200a2573200a257320} // %s with repeating new lines string
+	condition:
+		//(
+		//uint32(0) == 0xfeedface or // Mach-O MH_MAGIC
+		//uint32(0) == 0xcefaedfe or // Mach-O MH_CIGAM
+		//uint32(0) == 0xfeedfacf or // Mach-O MH_MAGIC_64
+		//uint32(0) == 0xcffaedfe or // Mach-O MH_CIGAM_64
+		//uint32(0) == 0xcafebabe or // Mach-O FAT_MAGIC
+		//uint32(0) == 0xbebafeca    // Mach-O FAT_CIGAM
+		//) and
+		(any of ($xcrypt*) or 4 of ($symbol*) or (all of ($string*)))
 }
 ```
 
