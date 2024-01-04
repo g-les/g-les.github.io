@@ -113,38 +113,38 @@ I have no idea how good the disassembly would be as a YARA rule, so for now, we'
 ```
 rule APT_NK_TA444_CosmicRust
 {
-		meta:
-				author = "Greg Lesnewich"
-				description = "track CosmicRust backdoor"
-				date = "2024-01-04"
-				version = "1.0"
-				hash = "5115be816d0cd579915d079573bfa384d78ac0bd33cc845b7a83a488b0fc1b99"
-				hash = "045959bcc47fc8c3d4fdfe4e065bfbc18cf7c3101d2fafbea0c9160e7e0805bc"
-				hash = "3315e5a4590e430550a4d85d0caf5f521d421a2966b23416fcfc275a5fd2629a"
+	meta:
+		author = "Greg Lesnewich"
+		description = "track CosmicRust backdoor"
+		date = "2024-01-04"
+		version = "1.0"
+		hash = "5115be816d0cd579915d079573bfa384d78ac0bd33cc845b7a83a488b0fc1b99"
+		hash = "045959bcc47fc8c3d4fdfe4e065bfbc18cf7c3101d2fafbea0c9160e7e0805bc"
+		hash = "3315e5a4590e430550a4d85d0caf5f521d421a2966b23416fcfc275a5fd2629a"
 
-		strings:
-				$name = "bot_client" ascii
-				$method = "basicinfo" ascii
-				$func1 = "get_boottime" ascii
-				$func2 = "get_arch" ascii
-				$func3 = "get_version" ascii
-				$func4 = "get_cwd" ascii
-				$func5 = "home_dir" ascii
-				$func6 = "set_cwd" ascii
-				$func7 = "decode_string" ascii
-				$func8 = "encode_string" ascii
-				$func9 = "process_request" ascii
-				$func10 = "process_response" ascii
+	strings:
+		$name = "bot_client" ascii
+		$method = "basicinfo" ascii
+		$func1 = "get_boottime" ascii
+		$func2 = "get_arch" ascii
+		$func3 = "get_version" ascii
+		$func4 = "get_cwd" ascii
+		$func5 = "home_dir" ascii
+		$func6 = "set_cwd" ascii
+		$func7 = "decode_string" ascii
+		$func8 = "encode_string" ascii
+		$func9 = "process_request" ascii
+		$func10 = "process_response" ascii
 
-		condition:
-				(
-				uint32(0) == 0xfeedface or // Mach-O MH_MAGIC
-				uint32(0) == 0xcefaedfe or // Mach-O MH_CIGAM
-				uint32(0) == 0xfeedfacf or // Mach-O MH_MAGIC_64
-				uint32(0) == 0xcffaedfe or // Mach-O MH_CIGAM_64
-				uint32(0) == 0xcafebabe or // Mach-O FAT_MAGIC
-				uint32(0) == 0xbebafeca    // Mach-O FAT_CIGAM
-				) and ($name or $method) and 6 of ($func*)
+	condition:
+		(
+		uint32(0) == 0xfeedface or // Mach-O MH_MAGIC
+		uint32(0) == 0xcefaedfe or // Mach-O MH_CIGAM
+		uint32(0) == 0xfeedfacf or // Mach-O MH_MAGIC_64
+		uint32(0) == 0xcffaedfe or // Mach-O MH_CIGAM_64
+		uint32(0) == 0xcafebabe or // Mach-O FAT_MAGIC
+		uint32(0) == 0xbebafeca    // Mach-O FAT_CIGAM
+		) and ($name or $method) and 6 of ($func*)
 }
 ```
 I thought about writing a rule looking for Macho's that contain weird arch strings, like `PowerPc` but it turns out CosmicRust stores these on the stack, so it might be inconsistent - maybe a problem to solve with Cerebro ...
